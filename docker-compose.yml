@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  api:
+    image: node:fermium-alpine
+    command: yarn dev
+    # command: yarn start
+    depends_on:
+      - mongodb
+      - rabbitmq
+    ports:
+      - "3000:3000"
+    restart: "on-failure"
+    volumes:
+      - ./:/app
+    working_dir: /app
+    networks:
+      - rs_ws_env_nw
+  
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    environment:
+      - AUTH=no
+    networks:
+      - rs_ws_env_nw
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+        - rs_ws_env_nw
+
+networks:
+  rs_ws_env_nw:

@@ -2,59 +2,37 @@
 
 A proposta deste teste é criar uma integração com a API da marvel.
 
-## Como fazer seu teste
+## Para rodar o projeto
    - Fazer o clone do repositório 
-   - Implementar as atividades do teste. 
-   - Quando terminar faça um commit desta branch.
-
-## Prazo para entrega
-   Submeter no git até 22/03 às 18:00h.
-
-## Detalhes API Marvel
-  - Acessar o site da API Marvel [Site da API](https://developer.marvel.com/documentation/getting_started)
-  - Criar uma conta para obter as credencias para acessar a api Marvel
-  - Uma vez gerada sua chave você usará as credencias para implementar os endpoints a seguir.
-  - Detalhe no README.md as informações necessárias para que podamos avaliar seu teste.
-
-
-
-## Especificação do projeto
-
-  - Fazer setup de uma API restfull usando NodeJS. Pode utilizar algum framework caso desejar.
-  - Implemente sua API seguindo as melhores metodologias e práticas de arquitetura e design patterns.
-  - Utilize as libs que ache necessário na implementação do seu app.
-  - Documentar em arquivo .md steps para execução do projeto.
+   - Instalar as dependências com utilizando `yarn`
+   - Subir os serviços no docker utilizando `docker-compose up`
+   - A documentação no Swagger está presente na rota `/api-docs`
+   - Obs: sei que não é uma boa prática, mas estou enviando no commit o arquivo .env, para que possam rodar o projeto mais facilmente, sem a necessidade de fazer outro cadastro na API da Marvel.
 
 ## Primeiro exercício
 
-  - Fazer setup do projeto da API rest.
-  - Criar um endpoint para recuperar da api Marvel o personagem (characters) "Avengers" e todas suas publicações (comics).
+  - Realizado na rota GET `/characters`
 
 ## Segundo exercício
 
- - Inserir cada item (nó) do retorno do endpoint acima em uma fila (Bull, Bee-queue, rabbitmq) chamada (Avengers) para tratamento do dado.
+ - Realizado na rota POST `/characters/import`
 
 ## Terceiro exercício
 
-   - Criar um serviço para processar os itens da fila Avengers, persistindo os dados em um banco.
-   - Persistir estas informações em collections (nosql) ou tabelas (relacional) - usar banco em memória ou mlab. 
-      * Dados importantes personagem (id, name, description, modified, thumbnail).
-      * Dados importantes comics (available, items[resourceURI, name])
-   - Criar o MER das entidades
+   - Realizado parcialmente: Apesar de ter criado a fila, tive dificuldades em implementar/subir o worker para consumo da fila. Para dar continuidade nos outros passos do desafio, salvei os dados diretamente no banco no momento do import do "segundo exercício".
 
 ## Quarto exercício
 
-   - Criar um endpoint que recupera do banco de dados o resourceURI de uma publicações (comic) de Avengers a partir do código = 77059 localizado na resourceURI.
-   - Fazer um request para a url recuperada do banco. Deve retornar os detalhes da comigc = 77059.
+   - Realizado na rota GET `/comics/{id}`
 
 ## Quinto exercício
 
-  - Criar um docker-compose para a app, database, filas e outros.
+  - Realizado.
 
   ## Sexto exercício
 
-  - Documentar a api no swagger.
+  - Realizado na rota `/api-docs`
 
 ## Sétimo exercício
 
-  - Configurar um arquivo serverless.yml para fazer o deploy dos endpoints em um cloud (aws, azure ou google cloud) usando [serverless framework](https://www.serverless.com/framework/docs/).
+  - Não consegui realizar a tempo, visto que investi grande parte do tempo em aprender e implementar o Docker Compose e RabbitMQ do zero, algo que não havia feito até o momento.

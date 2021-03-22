@@ -1,0 +1,70 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Sim;paul Marvel Documentation",
+    "description": "This is a Marvel Sim;paul API",
+    "version": "1.0.0",
+    "contact": {
+      "email": "rodrigonoguti@gmail.com"
+    }
+  },
+  "paths": {
+    "/characters": {
+      "get": {
+        "tags": [
+          "Characters"
+        ],
+        "summary": "Get Avengers character info",
+        "description": "Get Avengers character info and its comics",
+        "responses": {
+          "200": {
+            "description": "Return a json response with character information an its related comics"
+          }
+        }
+      }
+    },
+    "/characters/import": {
+      "post": {
+        "tags": [
+          "Characters"
+        ],
+        "summary": "Import Avengers characters info",
+        "description": "Import Avengers character info and its comics",
+        "responses": {
+          "200": {
+            "description": "Import succeeded"
+          },
+          "400": {
+            "description": "Error on import"
+          }
+        }
+      }
+    },
+    "/comics/{id}": {
+      "get": {
+        "tags": [
+          "Comics"
+        ],
+        "summary": "Get comic info",
+        "description": "Get a comic info given an ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "description": "Comic ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return a json response with the interested comic information"
+          },
+          "404": {
+            "description": "Informed ID does not exists in database"
+          }
+        }
+      }
+    }
+  }
+}
