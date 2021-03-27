@@ -7,6 +7,7 @@ Ferramentas e tecnologias utilizadas:
 - Express
 - RabbitMQ (mensageria)
 - Swagger (documentação)
+- Docker
 
 ## Para rodar o projeto
    - Fazer o clone do repositório 
