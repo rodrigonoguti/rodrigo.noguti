@@ -2,6 +2,12 @@
 
 A proposta deste teste é criar uma integração com a API da marvel.
 
+Ferramentas e tecnologias utilizadas:
+- NodeJS
+- Express
+- RabbitMQ (mensageria)
+- Swagger (documentação)
+
 ## Para rodar o projeto
    - Fazer o clone do repositório 
    - Instalar as dependências com utilizando `yarn`
