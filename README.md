@@ -5,6 +5,7 @@ A proposta deste teste é criar uma integração com a API da marvel.
 Ferramentas e tecnologias utilizadas:
 - NodeJS
 - Express
+- MongoDB
 - RabbitMQ (mensageria)
 - Swagger (documentação)
 - Docker
